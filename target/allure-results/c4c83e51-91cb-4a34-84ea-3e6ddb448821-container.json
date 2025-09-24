@@ -1,0 +1,1 @@
+{"uuid":"c4c83e51-91cb-4a34-84ea-3e6ddb448821","name":"Login.Ninja_Test","children":["10313db2-7f23-4050-bdb8-e85ec6132983"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1758017605297,"stop":1758017620940}],"afters":[],"start":1758017605269,"stop":1758017683491}
