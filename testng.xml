@@ -11,6 +11,7 @@
 
         <classes>
             <class name="smoke.Smoke_Test"/>
+
         </classes>
     </test>
 </suite>
