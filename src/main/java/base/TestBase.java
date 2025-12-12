@@ -85,10 +85,10 @@ public class TestBase {
       //  LogUtils.info("Navigation completed to " + appUrl);
     }
 
-    public static void tearDown() {
-        if (page != null) page.close();
-        if (context != null) context.close();
-        if (browser != null) browser.close();
-        if (playwright != null) playwright.close();
-    }
+//    public static void tearDown() {
+//        if (page != null) page.close();
+//        if (context != null) context.close();
+//        if (browser != null) browser.close();
+//        if (playwright != null) playwright.close();
+//    }
 }
