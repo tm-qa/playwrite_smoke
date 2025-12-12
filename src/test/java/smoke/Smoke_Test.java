@@ -8,7 +8,7 @@ import utils.TestUtil;
 
 
 @Listeners(iTestListener.class)
-@Test(groups = {"smoke"}, description = "All Verticals end to end Suite")
+@Test(groups = {"smoke"})
 public class Smoke_Test extends TestBase {
     private LoginPage loginPage;
     productpage pd;
@@ -42,7 +42,7 @@ public class Smoke_Test extends TestBase {
         page.navigate("https://app.turtlemintpro.com/sell");
     }
 
-    @Test
+    @Test(description = "TwoWheeler Flow Test")
     public void TW_Flow() throws InterruptedException {
         pd.selectvertical("tw");
         tw.CreateQuoteWithRegNumber("GJ05PU5256");
@@ -51,7 +51,7 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test
+    @Test(description = "FourWheeler Flow Test")
     public void FW_Flow() throws InterruptedException {
         pd.selectvertical("fw");
         fw.CreateQuoteWithoutRegNumber();
@@ -61,21 +61,21 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test
+    @Test(description = "Commercial Vehicle Flow Test")
     public void CV_Flow() throws InterruptedException {
         pd.selectvertical("cv");
         cv.comprehensive();
         tw.CheckoutTW();
     }
 
-    @Test
+    @Test(description = "Life Insurance Flow Test")
     public void life_Flow() throws Exception {
         pd.selectvertical("life");
         life.LifeRedirection();
         life.LifeCheckoutPage();
     }
 
-    @Test
+    @Test(description = "Health Insurance Flow Test")
     public void health_Flow() throws Exception {
         pd.selectvertical("health");
         hl.HealthProfile();
