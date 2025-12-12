@@ -1,1 +1,0 @@
-{"uuid":"eef5b396-db69-423f-b958-2dee9f73d3ef","name":"Login.Ninja_Test.loginless","children":["66218c2a-2083-42be-af09-b592bbad535f"],"description":"","befores":[{"name":"loginless","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1758018101857,"stop":1758018101858}],"afters":[],"start":1758018101857,"stop":1758018101858}

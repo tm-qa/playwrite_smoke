@@ -1,1 +1,0 @@
-{"uuid":"636d9885-9456-455b-b060-3c87da78aca4","name":"Login.Ninja_Test.cleanUp","children":["185d0ec0-ac2c-484c-84f9-5aa4ec095f82"],"description":"","befores":[],"afters":[{"name":"cleanUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1758013344612,"stop":1758013344612}],"start":1758013344610,"stop":1758013344612}

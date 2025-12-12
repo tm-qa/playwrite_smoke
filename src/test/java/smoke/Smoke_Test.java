@@ -8,7 +8,7 @@ import utils.TestUtil;
 
 
 @Listeners(iTestListener.class)
-@Test(groups = {"all"}, description = "All Verticals end to end Suite")
+@Test(groups = {"smoke"}, description = "All Verticals end to end Suite")
 public class Smoke_Test extends TestBase {
     private LoginPage loginPage;
     productpage pd;
@@ -18,6 +18,7 @@ public class Smoke_Test extends TestBase {
     FW_Pages fw;
     CV_Page cv;
     TestUtil tl;
+
 
     @BeforeClass
     public void setUp() {
@@ -86,5 +87,4 @@ public class Smoke_Test extends TestBase {
     public void cleanUp() {
      //    tearDown();
     }
-
 }
