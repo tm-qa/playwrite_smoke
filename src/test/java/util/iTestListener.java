@@ -1,72 +1,80 @@
 package util;
 
-
 import base.TestBase;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.TestUtil;
 
-import java.io.IOException;
-
+import java.io.ByteArrayInputStream;
 
 public class iTestListener extends TestBase implements ITestListener {
 
     @Override
-    public void onStart(ITestContext Results) {
-        System.out.println("Test Started");
-
+    public void onStart(ITestContext context) {
+        System.out.println("Test Suite Started: " + context.getName());
     }
 
     @Override
-    public void onFinish(ITestContext Results) {
-
-        System.out.println("Test Started");
-    }
-
-    public void onTestFailure(ITestResult Result) {
-
-        System.out.println("************  The name of the testcase failed is :" + Result.getName() + "  *************");
-        try {
-            TestUtil.getFullPageScreenShot(page);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        //   AppiumDriver<MobileElement> driver=Base_class.
+    public void onFinish(ITestContext context) {
+        System.out.println("Test Suite Finished: " + context.getName());
     }
 
     @Override
-    public void onTestSkipped(ITestResult Result) {
-        System.out.println("The name of the testcase Skipped is :" + Result.getName());
-        try {
-            TestUtil.getFullPageScreenShot(page);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public void onTestStart(ITestResult result) {
+        System.out.println("Test Started: " + result.getName());
+    }
+
+    @Override
+    public void onTestSuccess(ITestResult result) {
+        System.out.println("Test Passed: " + result.getName());
+        attachScreenshot();
+    }
+
+    @Override
+    public void onTestFailure(ITestResult result) {
+        System.out.println("Test Failed: " + result.getName());
+        attachScreenshot();
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        System.out.println("Test Skipped: " + result.getName());
+        attachScreenshot();
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        System.out.println("Success PErceNTage");
+        System.out.println("Test Failed within Success Percentage: " + result.getName());
+        attachScreenshot();
     }
 
-    // When Test case get Started, this method is called.
-    @Override
-    public void onTestStart(ITestResult Result) {
-        System.out.println(Result.getName() + " test case started");
-    }
-
-    // When Test case get passed, this method is called.
-    @Override
-    public void onTestSuccess(ITestResult Result) {
-        System.out.println("************* The name of the testcase passed is :" + Result.getName() + " ***************");
+    /**
+     * Capture full-page screenshot and attach to Allure
+     */
+    @Attachment(value = "Page Screenshot", type = "image/png")
+    private byte[] attachScreenshot() {
         try {
-            TestUtil.getFullPageScreenShot(page);
+            if (page != null) {
+                // Wait for any page animations or loading
+                page.waitForTimeout(2000);
+
+                byte[] screenshot = page.screenshot(
+                        new com.microsoft.playwright.Page.ScreenshotOptions().setFullPage(true)
+                );
+
+                // Attach to Allure
+                Allure.addAttachment("FULL PAGE SCREENSHOT", new ByteArrayInputStream(screenshot));
+
+                return screenshot;
+            } else {
+                System.out.println("Page is null — cannot capture screenshot");
+            }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return new byte[0];
     }
-
-
 }
