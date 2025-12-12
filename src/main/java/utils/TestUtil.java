@@ -35,17 +35,37 @@ public class TestUtil extends TestBase {
         LogUtils.info(msg);
     }
 
+//    private static String getTimeStamp() {
+//        return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//    }
+//    @Attachment(value = "Page Screenshot", type = "image/png")
+//    public static void getFullPageScreenShot(Page page) {
+//        try {page.waitForTimeout(5000);
+//            byte[] screenshot = page.screenshot(
+//                    new Page.ScreenshotOptions().setFullPage(true)
+//            );
+//            Allure.addAttachment("FULL SCREENSHOT " + getTimeStamp(),
+//                    new ByteArrayInputStream(screenshot));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+
     private static String getTimeStamp() {
         return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
     }
+
     @Attachment(value = "Page Screenshot", type = "image/png")
     public static void getFullPageScreenShot(Page page) {
-        try {page.waitForTimeout(5000);
-            byte[] screenshot = page.screenshot(
-                    new Page.ScreenshotOptions().setFullPage(true)
-            );
-            Allure.addAttachment("FULL SCREENSHOT " + getTimeStamp(),
-                    new ByteArrayInputStream(screenshot));
+        try {
+            if (page != null) {
+                page.waitForTimeout(1000); // ensure page is loaded
+                byte[] screenshot = page.screenshot(new Page.ScreenshotOptions().setFullPage(true));
+                Allure.addAttachment("FULL SCREENSHOT " + getTimeStamp(),
+                        new ByteArrayInputStream(screenshot));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
