@@ -11,7 +11,7 @@ public class LoginPage extends TestBase {
     String OTPField = "//input[@class='OTPInput']";
     String GetOTP = "//span[text()='GET OTP']";
     String VerifyOTPBtn = "//span[text()='Verify OTP']";
-    String sell = "(//span[text()='Sell'])[1]";
+    String sell = "//span[text()='Sell']";
 
     public LoginPage(Page page) {
         this.page = page;
