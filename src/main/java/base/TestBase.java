@@ -1,32 +1,11 @@
-//package base;
-//
-//import com.microsoft.playwright.*;
-//
-//public class TestBase {
-//        public static Playwright playwright;
-//        public static Browser browser;
-//        public static BrowserContext context;
-//        public static Page page;
-//
-//        public void initialization() {
-//            playwright = Playwright.create();
-//            browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-//            context = browser.newContext();
-//            page = context.newPage();
-//            page.navigate("https://app.mintpro.in/signup");
-//        }
-//    }
-//
-//
-
 package base;
 
 import com.microsoft.playwright.*;
 import utils.LogUtils;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class TestBase {
@@ -49,20 +28,20 @@ public class TestBase {
     }
 
     public static void initialization() {
-     //   String appUrl = prop.getProperty("url");
-     //   LogUtils.info("App URL: " + appUrl);
+//        String appUrl = prop.getProperty("url");
+//        LogUtils.info("App URL: " + appUrl);
 
         // Create Playwright instance
         playwright = Playwright.create();
 
         BrowserType.LaunchOptions options = new BrowserType.LaunchOptions();
-        options.setHeadless(false); // default for local
+        options.setHeadless(false); // always non-headless
 
-        // If running on Linux/Jenkins, switch to headless mode
+        // On Linux/Jenkins: need Xvfb to run headed
         String osName = System.getProperty("os.name").toLowerCase();
         LogUtils.info("OS Name: " + osName);
         if (osName.contains("linux")) {
-           // options.setHeadless(true);
+            LogUtils.info("Running on Linux — make sure Xvfb is installed for non-headless mode");
             options.setArgs(java.util.Arrays.asList(
                     "--disable-gpu",
                     "--no-sandbox",
@@ -76,19 +55,13 @@ public class TestBase {
 
         // Create context & page
         context = browser.newContext(new Browser.NewContextOptions()
-                .setViewportSize(1200, 800)); // window size
+                .setViewportSize(1200, 800));
+
         page = context.newPage();
 
-        // Navigate to app
-        page.navigate("https://app.mintpro.in/signup");
-
-      //  LogUtils.info("Navigation completed to " + appUrl);
+        // Navigate to application
+        page.navigate("https://app.turtlemintpro.com");
     }
 
-//    public static void tearDown() {
-//        if (page != null) page.close();
-//        if (context != null) context.close();
-//        if (browser != null) browser.close();
-//        if (playwright != null) playwright.close();
-//    }
+
 }
