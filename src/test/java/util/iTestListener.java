@@ -27,24 +27,24 @@ public class iTestListener extends TestBase implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.println("Test Passed: " + result.getName());
-        TestUtil.getFullPageScreenShot(TestBase.page);
+        TestUtil.getFullPageScreenShot(page);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Test Failed: " + result.getName());
-        TestUtil.getFullPageScreenShot(TestBase.page);
+        TestUtil.getFullPageScreenShot(page);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println("Test Skipped: " + result.getName());
-        TestUtil.getFullPageScreenShot(TestBase.page);
+        TestUtil.getFullPageScreenShot(page);
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         System.out.println("Test Failed within Success Percentage: " + result.getName());
-        TestUtil.getFullPageScreenShot(TestBase.page);
+        TestUtil.getFullPageScreenShot(page);
     }
 }
