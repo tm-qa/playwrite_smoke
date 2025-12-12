@@ -26,8 +26,9 @@ public class iTestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("Test Passed: " + result.getName());
         TestUtil.getFullPageScreenShot(page);
+        System.out.println("Test Passed: " + result.getName());
+
     }
 
     @Override
