@@ -85,6 +85,7 @@ public class Smoke_Test extends TestBase {
 
     @AfterMethod
     public void cleanUp() {
+        TestUtil.getFullPageScreenShot(page);
      //    tearDown();
     }
 }
