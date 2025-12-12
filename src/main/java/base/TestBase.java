@@ -62,7 +62,7 @@ public class TestBase {
         String osName = System.getProperty("os.name").toLowerCase();
         LogUtils.info("OS Name: " + osName);
         if (osName.contains("linux")) {
-            options.setHeadless(true);
+           // options.setHeadless(true);
             options.setArgs(java.util.Arrays.asList(
                     "--disable-gpu",
                     "--no-sandbox",

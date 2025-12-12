@@ -166,11 +166,10 @@ public class TW_page extends TestBase {
         Thread.sleep(1000);
         TestUtil.sendKeys(chassisno, "230620221135YESOK", "chassisno select");
         Thread.sleep(2000);
-        TestUtil.click(continu, " continue clicked");
-        LogUtils.info("Continue Clicked !");
+        TestUtil.click(continu, " continue clicked 1st");
         Thread.sleep(5000);
         try {
-            TestUtil.click(continu, " continue clicked");
+            TestUtil.click(continu, " continue clicked 2nd");
         } catch (Exception e) {
         }
         TestUtil.click(online, "Online clicked");
