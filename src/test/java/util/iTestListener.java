@@ -1,6 +1,7 @@
 package util;
 
 import base.TestBase;
+import com.microsoft.playwright.Page;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.testng.ITestContext;
@@ -9,6 +10,8 @@ import org.testng.ITestResult;
 import utils.TestUtil;
 
 import java.io.ByteArrayInputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class iTestListener extends TestBase implements ITestListener {
 
@@ -30,51 +33,41 @@ public class iTestListener extends TestBase implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.println("Test Passed: " + result.getName());
-        attachScreenshot();
+        attachScreenshot(TestBase.page);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Test Failed: " + result.getName());
-        attachScreenshot();
+        attachScreenshot(TestBase.page);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println("Test Skipped: " + result.getName());
-        attachScreenshot();
+        attachScreenshot(TestBase.page);
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         System.out.println("Test Failed within Success Percentage: " + result.getName());
-        attachScreenshot();
+        attachScreenshot(TestBase.page);
     }
 
-    /**
-     * Capture full-page screenshot and attach to Allure
-     */
     @Attachment(value = "Page Screenshot", type = "image/png")
-    private byte[] attachScreenshot() {
+    public static void attachScreenshot(Page page) {
         try {
-            if (page != null) {
-                // Wait for any page animations or loading
-                page.waitForTimeout(2000);
-
-                byte[] screenshot = page.screenshot(
-                        new com.microsoft.playwright.Page.ScreenshotOptions().setFullPage(true)
-                );
-
-                // Attach to Allure
-                Allure.addAttachment("FULL PAGE SCREENSHOT", new ByteArrayInputStream(screenshot));
-
-                return screenshot;
-            } else {
-                System.out.println("Page is null — cannot capture screenshot");
-            }
+            page.waitForTimeout(2000); // wait to ensure page is loaded
+            byte[] screenshot = page.screenshot(new Page.ScreenshotOptions().setFullPage(true));
+            Allure.addAttachment("FULL SCREENSHOT " + getTimeStamp(),
+                    new ByteArrayInputStream(screenshot));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new byte[0];
     }
+
+    private static String getTimeStamp() {
+        return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+    }
+
 }
