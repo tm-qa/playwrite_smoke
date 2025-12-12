@@ -2,50 +2,58 @@ package util;
 
 import base.TestBase;
 import com.microsoft.playwright.Page;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import utils.TestUtil;
+
+import java.io.ByteArrayInputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class iTestListener extends TestBase implements ITestListener {
 
     @Override
-    public void onStart(ITestContext context) {
-        System.out.println("Test Suite Started: " + context.getName());
-    }
-
-    @Override
-    public void onFinish(ITestContext context) {
-        System.out.println("Test Suite Finished: " + context.getName());
-    }
-
-    @Override
-    public void onTestStart(ITestResult result) {
-        System.out.println("Test Started: " + result.getName());
-    }
-
-    @Override
     public void onTestSuccess(ITestResult result) {
-        TestUtil.getFullPageScreenShot(page);
         System.out.println("Test Passed: " + result.getName());
-
+        attachScreenshotSafe("PASS: " + result.getName(), TestBase.page);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Test Failed: " + result.getName());
-        TestUtil.getFullPageScreenShot(page);
+        attachScreenshotSafe("FAIL: " + result.getName(), TestBase.page);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println("Test Skipped: " + result.getName());
-        TestUtil.getFullPageScreenShot(page);
+        attachScreenshotSafe("SKIP: " + result.getName(), TestBase.page);
+    }
+
+    private void attachScreenshotSafe(String name, Page page) {
+        try {
+            Allure.step("Attaching screenshot: " + name, () -> {
+                byte[] screenshot = page.screenshot(new Page.ScreenshotOptions().setFullPage(true));
+                Allure.addAttachment(name + " " + getTimeStamp(),
+                        new ByteArrayInputStream(screenshot));
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getTimeStamp() {
+        return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
     }
 
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        System.out.println("Test Failed within Success Percentage: " + result.getName());
-        TestUtil.getFullPageScreenShot(page);
-    }
+    public void onTestStart(ITestResult result) {}
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {}
+    @Override
+    public void onStart(ITestContext context) {}
+    @Override
+    public void onFinish(ITestContext context) {}
 }

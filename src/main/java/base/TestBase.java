@@ -30,15 +30,12 @@ public class TestBase {
         String appUrl = "https://app.turtlemintpro.com";
         LogUtils.info("App URL: " + appUrl);
 
-        // Create Playwright instance
         playwright = Playwright.create();
 
         BrowserType.LaunchOptions options = new BrowserType.LaunchOptions();
 
-        // Default: non-headless for local
         options.setHeadless(false);
 
-        // Detect Linux/Jenkins environment
         String osName = System.getProperty("os.name").toLowerCase();
         LogUtils.info("OS Name: " + osName);
         if (osName.contains("linux")) {
@@ -52,17 +49,13 @@ public class TestBase {
             ));
         }
 
-        // Launch browser
         browser = playwright.chromium().launch(options);
 
-        // Create context with viewport size
         context = browser.newContext(new Browser.NewContextOptions()
                 .setViewportSize(1200, 800));
 
-        // Create page
         page = context.newPage();
 
-        // Navigate to app
         page.navigate(appUrl);
         LogUtils.info("Navigation completed to " + appUrl);
     }
