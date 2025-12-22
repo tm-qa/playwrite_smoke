@@ -19,7 +19,7 @@ public class Smoke_Test extends TestBase {
     TestUtil tl;
 
 
-    @BeforeClass(groups = {"FW", "TW", "CV", "Health", "Life","data"})
+    @BeforeClass
     public void setUp() {
         initialization();
 
@@ -36,12 +36,12 @@ public class Smoke_Test extends TestBase {
         loginPage.sell();
     }
 
-    @BeforeMethod(groups = {"FW", "TW", "CV", "Health", "Life"})
+    @BeforeMethod
     public void loginless() {
         page.navigate("https://app.turtlemintpro.com/sell");
     }
 
-    @Test(description = "TwoWheeler Flow Test",groups = {"TW"})
+    @Test(description = "TwoWheeler Flow Test", groups = {"TW", "smoke"})
     public void TW_Flow() throws InterruptedException {
         pd.selectvertical("tw");
         tw.CreateQuoteWithRegNumber("GJ05PU5256");
@@ -50,7 +50,7 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test(description = "FourWheeler Flow Test")
+    @Test(description = "FourWheeler Flow Test", groups = {"FW", "smoke"})
     public void FW_Flow() throws InterruptedException {
         pd.selectvertical("fw");
         fw.CreateQuoteWithoutRegNumber();
@@ -60,21 +60,21 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test(description = "Commercial Vehicle Flow Test")
+    @Test(description = "Commercial Vehicle Flow Test", groups = {"CV", "smoke"})
     public void CV_Flow() throws InterruptedException {
         pd.selectvertical("cv");
         cv.comprehensive();
         tw.CheckoutTW();
     }
 
-    @Test(description = "Life Insurance Flow Test")
+    @Test(description = "Life Insurance Flow Test", groups = {"Life", "smoke"})
     public void life_Flow() throws Exception {
         pd.selectvertical("life");
         life.LifeRedirection();
         life.LifeCheckoutPage();
     }
 
-    @Test(description = "Health Insurance Flow Test")
+    @Test(description = "Health Insurance Flow Test", groups = {"Health", "smoke"})
     public void health_Flow() throws Exception {
         pd.selectvertical("health");
         hl.HealthProfile();
@@ -85,6 +85,6 @@ public class Smoke_Test extends TestBase {
     @AfterMethod
     public void cleanUp() {
         TestUtil.getFullPageScreenShot(page);
-     //    tearDown();
+        //    tearDown();
     }
 }
