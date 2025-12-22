@@ -7,7 +7,6 @@ import util.iTestListener;
 import utils.TestUtil;
 
 
-@Listeners(iTestListener.class)
 @Test(groups = {"smoke"})
 public class Smoke_Test extends TestBase {
     private LoginPage loginPage;
