@@ -82,7 +82,7 @@ public class Smoke_Test extends TestBase {
         hl.healthCheckoutOVD();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void cleanUp() {
         TestUtil.getFullPageScreenShot(page);
         //    tearDown();
