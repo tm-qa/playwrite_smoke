@@ -19,7 +19,7 @@ public class Smoke_Test extends TestBase {
     TestUtil tl;
 
 
-    @BeforeClass
+    @BeforeClass(groups = {"FW", "TW", "CV", "Health", "Life","data"})
     public void setUp() {
         initialization();
 
@@ -41,7 +41,7 @@ public class Smoke_Test extends TestBase {
         page.navigate("https://app.turtlemintpro.com/sell");
     }
 
-    @Test(description = "TwoWheeler Flow Test")
+    @Test(description = "TwoWheeler Flow Test",groups = {"TW"})
     public void TW_Flow() throws InterruptedException {
         pd.selectvertical("tw");
         tw.CreateQuoteWithRegNumber("GJ05PU5256");
