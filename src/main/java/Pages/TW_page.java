@@ -79,10 +79,12 @@ public class TW_page extends TestBase {
         TestUtil.click(ClickVariant, " ClickVariant Clicked");
         TestUtil.click(SelectTWVariant2, " selected");
         TestUtil.click(NextButton, " NextButton");
+        Thread.sleep(500);
         TestUtil.click(comp, " comp select");
         TestUtil.click(NextButton, " NextButton");
         TestUtil.sendKeys(date, TestUtil.PresentDate(), TestUtil.PresentDate() + " date Select");
         TestUtil.click(curr, "");
+        Thread.sleep(1500);
         TestUtil.click(comp, " comp select");
         TestUtil.click(no, " no select");
         TestUtil.click(zero, " 0 select");
