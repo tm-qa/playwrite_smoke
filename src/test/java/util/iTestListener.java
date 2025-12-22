@@ -7,6 +7,7 @@ import io.qameta.allure.Attachment;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.LogUtils;
 
 import java.io.ByteArrayInputStream;
 import java.text.SimpleDateFormat;
@@ -16,20 +17,20 @@ public class iTestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("Test Passed: " + result.getName());
-        attachScreenshotSafe("PASS: " + result.getName(), TestBase.page);
+        LogUtils.info("Test Passed: " + result.getName());
+        // attachScreenshotSafe("PASS: " + result.getName(), TestBase.page);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("Test Failed: " + result.getName());
-        attachScreenshotSafe("FAIL: " + result.getName(), TestBase.page);
+        LogUtils.info("Test Failed: " + result.getName());
+        //  attachScreenshotSafe("FAIL: " + result.getName(), TestBase.page);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println("Test Skipped: " + result.getName());
-        attachScreenshotSafe("SKIP: " + result.getName(), TestBase.page);
+       LogUtils.info("Test Skipped: " + result.getName());
+        //  attachScreenshotSafe("SKIP: " + result.getName(), TestBase.page);
     }
 
     private void attachScreenshotSafe(String name, Page page) {
@@ -49,11 +50,18 @@ public class iTestListener extends TestBase implements ITestListener {
     }
 
     @Override
-    public void onTestStart(ITestResult result) {}
+    public void onTestStart(ITestResult result) {
+    }
+
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {}
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    }
+
     @Override
-    public void onStart(ITestContext context) {}
+    public void onStart(ITestContext context) {
+    }
+
     @Override
-    public void onFinish(ITestContext context) {}
+    public void onFinish(ITestContext context) {
+    }
 }

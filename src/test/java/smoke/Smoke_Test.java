@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import util.iTestListener;
 import utils.TestUtil;
 
-
+@Listeners(iTestListener.class)
 @Test
 public class Smoke_Test extends TestBase {
     private LoginPage loginPage;
