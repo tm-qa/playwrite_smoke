@@ -36,7 +36,7 @@ public class Smoke_Test extends TestBase {
         loginPage.sell();
     }
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"FW", "TW", "CV", "Health", "Life"})
     public void loginless() {
         page.navigate("https://app.turtlemintpro.com/sell");
     }
