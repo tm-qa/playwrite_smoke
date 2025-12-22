@@ -101,6 +101,7 @@ public class TW_page extends TestBase {
     }
 
     public void SelectTWPlan() {
+        TestUtil.getFullPageScreenShot(page);
         try {
             TestUtil.click(GotItBtn, "GotIt Btn");
         } catch (Exception E) {

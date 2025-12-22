@@ -103,7 +103,6 @@ public class CV_Page extends TestBase {
         TestUtil.sendKeys(calender,"25/09/2018","Calender Clicked");
         Thread.sleep(500);
         TestUtil.sendKeys(calender,"Enter","Calender Clicked");
-        TestUtil.getFullPageScreenShot(page);
         TestUtil.click(Public,"Public Vehicle Selected");
         TestUtil.click(next,"Next Button Clicked");
         TestUtil.click(Comprehensive,"Comprehensive");
@@ -152,6 +151,7 @@ public class CV_Page extends TestBase {
             System.out.println("GotIt button not displayed");
         }
       //  TestUtil.click(gotit,"Got it button clicked");
+        TestUtil.getFullPageScreenShot(page);
         TestUtil.click(SelectCVPlanRel,"");
     }
 
