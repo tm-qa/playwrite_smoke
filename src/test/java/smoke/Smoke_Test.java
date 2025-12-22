@@ -3,6 +3,7 @@ package smoke;
 import Pages.*;
 import base.TestBase;
 import org.testng.annotations.*;
+import util.RetryAnalyser;
 import util.iTestListener;
 import utils.TestUtil;
 
@@ -41,7 +42,7 @@ public class Smoke_Test extends TestBase {
         page.navigate("https://app.turtlemintpro.com/sell");
     }
 
-    @Test(description = "TwoWheeler Flow Test", groups = {"TW", "smoke"})
+    @Test(description = "TwoWheeler Flow Test", groups = {"TW", "smoke"},   retryAnalyzer = RetryAnalyser.class)
     public void TW_Flow() throws InterruptedException {
         pd.selectvertical("tw");
         tw.CreateQuoteWithRegNumber("GJ05PU5256");
@@ -50,7 +51,7 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test(description = "FourWheeler Flow Test", groups = {"FW", "smoke"})
+    @Test(description = "FourWheeler Flow Test", groups = {"FW", "smoke"}, retryAnalyzer = RetryAnalyser.class)
     public void FW_Flow() throws InterruptedException {
         pd.selectvertical("fw");
         fw.CreateQuoteWithoutRegNumber();
@@ -60,21 +61,21 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test(description = "Commercial Vehicle Flow Test", groups = {"CV", "smoke"})
+    @Test(description = "Commercial Vehicle Flow Test", groups = {"CV", "smoke"},   retryAnalyzer = RetryAnalyser.class)
     public void CV_Flow() throws InterruptedException {
         pd.selectvertical("cv");
         cv.comprehensive();
         tw.CheckoutTW();
     }
 
-    @Test(priority = 0, description = "Life Insurance Flow Test", groups = {"Life", "smoke"})
+    @Test(priority = 0, description = "Life Insurance Flow Test", groups = {"Life", "smoke"}, retryAnalyzer = RetryAnalyser.class)
     public void life_Flow() throws Exception {
         pd.selectvertical("life");
         life.LifeRedirection();
         life.LifeCheckoutPage();
     }
 
-    @Test(priority = 1, description = "Health Insurance Flow Test", groups = {"Health", "smoke"})
+    @Test(priority = 1, description = "Health Insurance Flow Test", groups = {"Health", "smoke"}, retryAnalyzer = RetryAnalyser.class)
     public void health_Flow() throws Exception {
         pd.selectvertical("health");
         hl.HealthProfile();

@@ -17,7 +17,7 @@ public class iTestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("************  The name of the testcase failed is :"+result.getName()+"  *************");
+        System.out.println("************  The name of the testcase Passed is :"+result.getName()+"  *************");
         // attachScreenshotSafe("PASS: " + result.getName(), TestBase.page);
     }
 
@@ -29,7 +29,7 @@ public class iTestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println("************  The name of the testcase failed is :"+result.getName()+"  *************");
+        System.out.println("************  The name of the testcase Skipped is :"+result.getName()+"  *************");
         //  attachScreenshotSafe("SKIP: " + result.getName(), TestBase.page);
     }
 
