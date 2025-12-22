@@ -124,7 +124,12 @@ public class TW_page extends TestBase {
     }
 
     public void CheckoutTW() throws InterruptedException {
-      //  TestUtil.click(ProceedtoBuy, "Proceed to Buy");
+        try {
+            TestUtil.click(ProceedtoBuy, "confirm to Buy");
+        }
+        catch (Exception e){
+            System.out.println("confirm to buy not displayed");
+        }
         KycFormFilling();
         LogUtils.info("KYC Done");
         TestUtil.click(title, "title Btn");
