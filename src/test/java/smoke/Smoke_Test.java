@@ -19,7 +19,7 @@ public class Smoke_Test extends TestBase {
     TestUtil tl;
 
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         initialization();
 
@@ -36,7 +36,7 @@ public class Smoke_Test extends TestBase {
         loginPage.sell();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void loginless() {
         page.navigate("https://app.turtlemintpro.com/sell");
     }
