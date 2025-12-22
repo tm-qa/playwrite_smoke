@@ -178,6 +178,7 @@ public class TW_page extends TestBase {
         TestUtil.click(online, "Online clicked");
         Thread.sleep(1000);
         TestUtil.click(makepayment, "make payment clicked");
+        Thread.sleep(2000);
     }
 
 }
