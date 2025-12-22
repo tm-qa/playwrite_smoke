@@ -122,13 +122,13 @@ public class health_Page extends TestBase {
         TestUtil.click(ContinueBt2, "Clicked on Continue Button");
         Thread.sleep(500);
 
-     //   OvdUploadFile("/home/ubuntu/storage/AadharFrontMotor.png");
+        OvdUploadFile("/home/ubuntu/storage/AadharFrontMotor.png");
         Thread.sleep(2000);
         LogUtils.info("Aadhar fornt page uploaded");
-          OvdUploadFile("/Users/tejasbahadure/Downloads/AadharFrontMotor.png");
+     //     OvdUploadFile("/Users/tejasbahadure/Downloads/AadharFrontMotor.png");
         Thread.sleep(2000);
-      //  OvdUploadFile("/home/ubuntu/storage/AadharBackMotor.png");
-          OvdUploadFile("/Users/tejasbahadure/Downloads/AadharBackside.png");
+        OvdUploadFile("/home/ubuntu/storage/AadharBackMotor.png");
+      //    OvdUploadFile("/Users/tejasbahadure/Downloads/AadharBackside.png");
         LogUtils.info("Aadhar Back page uploaded");
         Thread.sleep(4000);
         TestUtil.click(SubmittedBT, "clicked submitted");
