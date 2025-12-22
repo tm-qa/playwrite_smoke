@@ -67,14 +67,14 @@ public class Smoke_Test extends TestBase {
         tw.CheckoutTW();
     }
 
-    @Test(description = "Life Insurance Flow Test", groups = {"Life", "smoke"})
+    @Test(priority = 0, description = "Life Insurance Flow Test", groups = {"Life", "smoke"})
     public void life_Flow() throws Exception {
         pd.selectvertical("life");
         life.LifeRedirection();
         life.LifeCheckoutPage();
     }
 
-    @Test(description = "Health Insurance Flow Test", groups = {"Health", "smoke"})
+    @Test(priority = 1, description = "Health Insurance Flow Test", groups = {"Health", "smoke"})
     public void health_Flow() throws Exception {
         pd.selectvertical("health");
         hl.HealthProfile();
