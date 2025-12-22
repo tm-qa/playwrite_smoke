@@ -7,7 +7,7 @@ import util.iTestListener;
 import utils.TestUtil;
 
 
-@Test(groups = {"smoke"})
+@Test
 public class Smoke_Test extends TestBase {
     private LoginPage loginPage;
     productpage pd;
