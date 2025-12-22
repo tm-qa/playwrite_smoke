@@ -20,7 +20,7 @@ public class TW_page extends TestBase {
     String reli = "//a[@data-auto=\"RELI-web\"]";
     String GotItBtn = "//div[text()='Got It!']";
     String SelectTWModel = "//span[@class='ng-binding ng-scope'][normalize-space()='Honda Activa']";
-    String RegYear = "//span[text()='2023']";
+    String cofirm = "//button[@data-auto=\"confirm-btn\"]";
     String name = "//input[@id='customerName']";
     String ClickVariant = "//div[@placeholder='Type name or select']//span[@aria-label='Select box activate']";
     String SelectTWVariant = "//span[contains(text(),'5G Deluxe (110 CC)')]";
@@ -107,6 +107,7 @@ public class TW_page extends TestBase {
             System.out.println("GotIt button not displayed");
         }
         TestUtil.click(reli, "Reli plan");
+        TestUtil.click(cofirm," Confirm Btn");
     }
 
     public void KycFormFilling() throws InterruptedException {
