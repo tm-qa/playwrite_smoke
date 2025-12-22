@@ -14,14 +14,14 @@ public class health_Page extends TestBase {
         this.page = page;
     }
 
-    String healthInsurance = "//div[text()='Health Insurance']";
+    String healthInsurance = "//p[text()='Health Insurance']";
     String SelectGender = "//span[text()='Male']";
     String SelectInsuredPerson = "//span[text()='Self']";
     String NextBtn = "//span[text()='Next']//parent::button";
     String Pincode = "//input[@inputmode=\"numeric\"]";
     String date = "//input[@placeholder=\"dd/mm/yyyy\"]";
     String Name = "//input[@placeholder=\"Name\"]";
-    String icicselect = "//h5[text()=\"Health AdvantEdge\"]//..//..//..//button";
+    String icicselect = "//h5[text()=\"Elevate\"]//..//..//..//button";
     String buy = "//span[text()='Buy Now']";
     String MobileNo = "//input[@placeholder=\"Enter mobile number\"]";
     String Mailid = "//input[@placeholder=\"Enter Email Id\"]";
@@ -42,7 +42,7 @@ public class health_Page extends TestBase {
     String closecrossbutton = "//button[@aria-label=\"Close\"and @class=\"ant-modal-close\"]";
     String nomineeisMy = "//input[@id=\"proposer.nomineeRelation\"]";
     String nomineenamedetail = "//input[@id=\"proposer.nomineeName\"]";
-    String dobdetails = "//input[@id=\"proposer.nomineeDob\"]";
+    String dobdetails = "//input[@placeholder=\"DD/MM/YYYY\"]";
     String pan = "//input[@id=\"proposer.panNo\"]";
     String ContinueBt2 = "//h4[text()='Upload Document']//following ::span[text()='Continue'][1]";
     String radioBT2 = "//h4[text()='Upload Document']";
@@ -72,7 +72,7 @@ public class health_Page extends TestBase {
         TestUtil.click(NextBtn, "");// Pin code screen
         TestUtil.sendKeys(Name, "health Test",  " Name Passed on the Lead Name Page");
         TestUtil.click(NextBtn, "");//name screen
-        TestUtil.click(Buywithimmediat, "Buy with immediate issuance (18% GST)");//name screen
+        // TestUtil.click(Buywithimmediat, "Buy with immediate issuance (18% GST)");//name screen
 
     }
 
@@ -121,12 +121,14 @@ public class health_Page extends TestBase {
         Thread.sleep(500);
         TestUtil.click(ContinueBt2, "Clicked on Continue Button");
         Thread.sleep(500);
-        //OvdUploadFile("/home/ubuntu/storage/AadharFrontMotor.png");
-        OvdUploadFile("/Users/tejasbahadure/Downloads/AadharFrontMotor.png");
+
+     //   OvdUploadFile("/home/ubuntu/storage/AadharFrontMotor.png");
         Thread.sleep(2000);
         LogUtils.info("Aadhar fornt page uploaded");
-        //  OvdUploadFile("/home/ubuntu/storage/AadharBackMotor.png");
-        OvdUploadFile("/Users/tejasbahadure/Downloads/AadharBackside.png");
+          OvdUploadFile("/Users/tejasbahadure/Downloads/AadharFrontMotor.png");
+        Thread.sleep(2000);
+      //  OvdUploadFile("/home/ubuntu/storage/AadharBackMotor.png");
+          OvdUploadFile("/Users/tejasbahadure/Downloads/AadharBackside.png");
         LogUtils.info("Aadhar Back page uploaded");
         Thread.sleep(4000);
         TestUtil.click(SubmittedBT, "clicked submitted");
@@ -147,8 +149,8 @@ public class health_Page extends TestBase {
         Thread.sleep(500);
         TestUtil.sendKeys(HeightInFeet, "5", "");
         Thread.sleep(500);
-       // TestUtil.sendKeys(HeightInInch, "5", "");
-       // Thread.sleep(500);
+        TestUtil.sendKeys(HeightInInch, "5", "");
+        // Thread.sleep(500);
         TestUtil.sendKeys(Weight, "55", "Weight Provided as 55 Kgs");
         Thread.sleep(500);
         TestUtil.sendKeys(occupationdropdown, "comp", "Selected occupation");
@@ -156,6 +158,7 @@ public class health_Page extends TestBase {
         TestUtil.sendKeys(nomineeisMy, "br", "relationship entered");
         TestUtil.sendKeys(nomineeisMy, "Enter", "");
         TestUtil.sendKeys(nomineenamedetail, "auto test test", "nomiee name entered");
+        Thread.sleep(500);
         TestUtil.click(dobdetails, "Waiting for payment link....");
         Thread.sleep(1000);
         TestUtil.sendKeys(dobdetails, "12/02/2005", "DOB entered");
