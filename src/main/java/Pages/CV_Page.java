@@ -146,7 +146,12 @@ public class CV_Page extends TestBase {
         TestUtil.sendKeys(leadname,"Automation Test","Lead Name Entered");
         TestUtil.click(next,"Moving to Results Page...");
         LogUtils.info("Comprehensive Profile Done");
-        TestUtil.click(gotit,"Got it button clicked");
+        try {
+            TestUtil.click(gotit,"Got It Button Clicked");
+        } catch (Exception E) {
+            System.out.println("GotIt button not displayed");
+        }
+      //  TestUtil.click(gotit,"Got it button clicked");
         TestUtil.click(SelectCVPlanRel,"");
     }
 
