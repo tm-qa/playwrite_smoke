@@ -48,7 +48,7 @@ public class Smoke_Test extends TestBase {
         tw.CreateQuoteWithRegNumber("GJ05PU5256");
         tw.SaveLead("TW test");
         tw.SelectTWPlan();
-        tw.CheckoutTW();
+        tw.CheckoutTW("TW");
     }
 
     @Test(description = "FourWheeler Flow Test", groups = {"FW", "smoke"}, retryAnalyzer = RetryAnalyser.class)
@@ -58,14 +58,14 @@ public class Smoke_Test extends TestBase {
         fw.SaveCarDetails("Ford figo");
         tw.SaveLead("FW test");
         tw.SelectTWPlan();
-        tw.CheckoutTW();
+        tw.CheckoutTW("FW");
     }
 
     @Test(description = "Commercial Vehicle Flow Test", groups = {"CV", "smoke"},   retryAnalyzer = RetryAnalyser.class)
     public void CV_Flow() throws InterruptedException {
         pd.selectvertical("cv");
         cv.comprehensive();
-        tw.CheckoutTW();
+        tw.CheckoutTW("CV");
     }
 
     @Test(priority = 0, description = "Life Insurance Flow Test", groups = {"Life", "smoke"}, retryAnalyzer = RetryAnalyser.class)

@@ -123,11 +123,10 @@ public class TW_page extends TestBase {
         TestUtil.click(KYCconfirm, "KYC confirm clicked");
     }
 
-    public void CheckoutTW() throws InterruptedException {
-        try {
+    public void CheckoutTW(String vertical) throws InterruptedException {
+        if (vertical.equals("CV")) {
             TestUtil.click(ProceedtoBuy, "confirm to Buy");
-        }
-        catch (Exception e){
+        }else {
             System.out.println("confirm to buy not displayed");
         }
         KycFormFilling();
