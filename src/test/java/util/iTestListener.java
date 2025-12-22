@@ -17,19 +17,19 @@ public class iTestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        LogUtils.info("Test Passed: " + result.getName());
+        System.out.println("************  The name of the testcase failed is :"+result.getName()+"  *************");
         // attachScreenshotSafe("PASS: " + result.getName(), TestBase.page);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        LogUtils.info("Test Failed: " + result.getName());
+        System.out.println("************  The name of the testcase failed is :"+result.getName()+"  *************");
         //  attachScreenshotSafe("FAIL: " + result.getName(), TestBase.page);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-       LogUtils.info("Test Skipped: " + result.getName());
+        System.out.println("************  The name of the testcase failed is :"+result.getName()+"  *************");
         //  attachScreenshotSafe("SKIP: " + result.getName(), TestBase.page);
     }
 
