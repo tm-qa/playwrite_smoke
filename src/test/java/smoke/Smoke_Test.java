@@ -18,6 +18,7 @@ public class Smoke_Test extends TestBase {
     FW_Pages fw;
     CV_Page cv;
     TestUtil tl;
+    String cur;
 
 
     @BeforeClass(alwaysRun = true)
@@ -35,11 +36,12 @@ public class Smoke_Test extends TestBase {
 
         loginPage.ValidateLogin("6999912345", "1234");
         loginPage.sell();
+        cur = page.url();
     }
 
     @BeforeMethod(alwaysRun = true)
     public void loginless() {
-        page.navigate("https://app.turtlemintpro.com/sell");
+        page.navigate(cur);
     }
 
     @Test(description = "TwoWheeler Flow Test", groups = {"TW", "smoke"},   retryAnalyzer = RetryAnalyser.class)
