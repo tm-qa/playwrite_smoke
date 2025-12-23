@@ -28,7 +28,7 @@ public class TestBase {
 
     public static void initialization() {
         String appUrl = "https://app.turtlemintpro.com";
-        LogUtils.info("App URL: " + appUrl);
+        LogUtils.info("URL: " + appUrl);
 
         playwright = Playwright.create();
 
@@ -56,8 +56,9 @@ public class TestBase {
 
         page = context.newPage();
 
-        page.navigate(appUrl);
-        LogUtils.info("Navigation completed to " + appUrl);
+     //   page.navigate(appUrl);
+        page.navigate(System.getProperty("url"));
+        LogUtils.info("Navigation to " + appUrl);
     }
 
 }
