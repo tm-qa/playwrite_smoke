@@ -22,7 +22,7 @@ public class Smoke_Test extends TestBase {
 
 
     @BeforeClass(alwaysRun = true)
-    public void setUp() {
+    public void setUp() throws InterruptedException {
         initialization();
 
         loginPage = new LoginPage(page);
