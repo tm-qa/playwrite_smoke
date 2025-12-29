@@ -112,7 +112,7 @@ public class TW_page extends TestBase {
     }
 
     public void KycFormFilling() throws InterruptedException {
-        Thread.sleep(7000);
+        Thread.sleep(4000);
         LogUtils.info("KYC Start");
         TestUtil.click(IndividualSelect, "");
         TestUtil.click(DOBField, "DOB Field Clicked");

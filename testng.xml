@@ -5,6 +5,7 @@
     <test name="Dynamic Groups" verbose="2">
         <classes>
             <class name="smoke.Smoke_Test"/>
+            <class name="smoke.sachet_Smoke"/>
         </classes>
     </test>
 

@@ -37,7 +37,7 @@ public class FW_Pages extends TestBase {
         TestUtil.sendKeys(Search, "MH01", "No RegistrationDate");
         Thread.sleep(500);
         TestUtil.click(SelectRegLocation, "MH01 Selected");
-        Thread.sleep(2000);
+        Thread.sleep(500);
         page.locator(CheckBox).hover();
         Thread.sleep(500);
         TestUtil.click(CheckBox, "");

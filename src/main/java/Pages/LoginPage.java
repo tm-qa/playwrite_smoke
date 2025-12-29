@@ -17,14 +17,16 @@ public class LoginPage extends TestBase {
         this.page = page;
     }
 
-    public void ValidateLogin(String username, String otp) {
+    public void ValidateLogin(String username, String otp) throws InterruptedException {
         TestUtil.sendKeys(MobileNumber,username,"Mobile Number Entered");
         TestUtil.click(GetOTP,"Continue pressed");
         TestUtil.sendKeys(OTPField,otp,"OTP Entered");
         TestUtil.click(VerifyOTPBtn,"Login Successful");
+        Thread.sleep(1000);
     }
-    public void sell()  {
+    public void sell() throws InterruptedException {
         TestUtil.click(sell,"Sell button");
+        Thread.sleep(1000);
     }
 
 
