@@ -2,6 +2,7 @@ package utils;
 
 import base.TestBase;
 import com.github.javafaker.Faker;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
 import io.qameta.allure.Allure;
@@ -33,6 +34,12 @@ public class TestUtil extends TestBase {
             page.locator(xpath).fill(value);
         }
         LogUtils.info(msg);
+    }
+
+    public static void IsDisplayed(String xpath, String locator) {
+        page.locator(xpath).waitFor(new com.microsoft.playwright.Locator.WaitForOptions()
+                .setState(WaitForSelectorState.VISIBLE).setTimeout(15000));
+
     }
 
 //    private static String getTimeStamp() {
@@ -83,9 +90,9 @@ public class TestUtil extends TestBase {
                 || value.equalsIgnoreCase("Alt");
     }
 
-    public static void jsClick(String xpath) {
+    public static void jsClick(String xpath,String mess) {
         page.locator(xpath).evaluate("element => element.click()");
-        LogUtils.info("Clicked using JS: " + xpath);
+        LogUtils.info("Clicked using JS: " + mess);
     }
 
     public static String PresentDate() {
